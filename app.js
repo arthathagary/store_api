@@ -5,7 +5,7 @@ const connectDB =require('./db/connect')
 require('dotenv').config()
 
 
-app.use('/',productRouter);
+app.use('/api/v1/product',productRouter);
 
 
 const port = 4000;
@@ -13,8 +13,6 @@ const port = 4000;
 const start = async ()=>{
     try {
         await connectDB(process.env.MONGO_URI)
-        await Product.deleteMany()
-        await Product.create(jsonProducts)
         app.listen(port,()=>{
             console.log(`listening on ${port}`);
         })
